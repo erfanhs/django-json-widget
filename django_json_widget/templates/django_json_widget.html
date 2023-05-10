@@ -15,6 +15,13 @@
 
         var editor = new JSONEditor(container, options);
         var json = {{ widget.value|safe }};
-        editor.set(json);
+        
+        var new_json = {}
+        
+        json.forEach(function CallBack(item, i) {
+          new_json[item['title']] = item['value']
+        })
+  
+        editor.set(new_json);
     })();
 </script>

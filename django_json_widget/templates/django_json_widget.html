@@ -24,6 +24,11 @@
           } else {
             new_json[item['title']] = item['value'];
           }
+          
+          
+          if (item['old_value']) {
+            new_json[item['title']] += ' (Edited)'
+          }
         })
   
         editor.set(new_json);

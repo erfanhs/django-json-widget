@@ -22,7 +22,7 @@
         json.forEach(function CallBack(item, i) {
           
           // check for duplicates
-          if new_json[item['title']]:
+          if (new_json[item['title']]):
             count = counters[item['title']];
             if (!count) {
               count = 0;

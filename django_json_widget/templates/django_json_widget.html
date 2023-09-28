@@ -17,8 +17,21 @@
         var json = {{ widget.value|safe }};
         
         var new_json = {}
-        
+
+        counters = {}
         json.forEach(function CallBack(item, i) {
+          
+          // check for duplicates
+          if new_json[item['title']]:
+            count = counters[item['title']];
+            if (!count) {
+              count = 0;
+            }
+            count += 1;
+            item['title'] = item['title'] + '_' + count.toString();
+            counters[item['title']] = count;
+
+          // add to new json
           if (item['value_name']) {
             new_json[item['title']] = item['value_name'];
           } else {

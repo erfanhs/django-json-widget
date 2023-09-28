@@ -20,6 +20,9 @@
 
         counters = {}
         json.forEach(function CallBack(item, i) {
+
+          console.log(item['title']);
+          console.log(counters);
           
           // check for duplicates
           if (new_json[item['title']]) {

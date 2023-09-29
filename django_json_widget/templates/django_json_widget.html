@@ -17,22 +17,14 @@
         var json = {{ widget.value|safe }};
         
         var new_json = {}
-        var counters = {}
-
+  
         async function doJob(item, i) {
           
           console.log(item['title']);
-          console.log(counters);
           
           // check for duplicates
           if (new_json[item['title']]) {
-            count = counters[item['title']];
-            if (!count) {
-              count = 0;
-            }
-            count += 1;
-            counters[item['title']] = count;
-            item['title'] = item['title'] + '_' + count.toString();
+            item['title'] = item['title'] + '_' + i.toString();
           }
 
           // add to new json

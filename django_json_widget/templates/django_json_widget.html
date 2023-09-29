@@ -23,12 +23,15 @@
         json.forEach(function CallBack(item, i) {
           console.log(i);
           console.log(item['title']);
+          console.log(new_json);
           
           // check for duplicates
           new_title = null;
           if (new_json[item['title']]) {
+            console.log('yes');
             new_title = item['title'] + '_' + i.toString();
           }
+          else {console.log('no');}
 
           // add to new json
           if (item['value_name']) {

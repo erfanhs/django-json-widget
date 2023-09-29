@@ -17,10 +17,10 @@
         var json = {{ widget.value|safe }};
         
         var new_json = {}
-
         var counters = {}
-        json.forEach(function CallBack(item, i) {
 
+        async function doJob(item, i) {
+          
           console.log(item['title']);
           console.log(counters);
           
@@ -42,10 +42,13 @@
             new_json[item['title']] = item['value'];
           }
           
-          
           if (item['old_value']) {
             new_json[item['title']] += ' (Edited)'
           }
+        }
+  
+        json.forEach(async function CallBack(item, i) {
+          await doJob(item, i);
         })
   
         editor.set(new_json);

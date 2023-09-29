@@ -17,9 +17,6 @@
         var json = {{ widget.value|safe }};
         
         var new_json = {}
-  
-        // async function doJob(item, i) {
-        // }
 
         console.log(json);
   
@@ -27,15 +24,18 @@
           console.log(item['title']);
           
           // check for duplicates
+          new_title = null;
           if (new_json[item['title']]) {
-            item['title'] = item['title'] + '_' + i.toString();
+            new_title = item['title'] + '_' + i.toString();
           }
 
           // add to new json
           if (item['value_name']) {
-            new_json[item['title']] = item['value_name'];
+            if (new_title) {new_json[new_title] = item['value_name'];}
+            else {new_json[item['title']] = item['value_name'];}
           } else {
-            new_json[item['title']] = item['value'];
+            if (new_title) {new_json[new_title] = item['value'];}
+            else {new_json[item['title']] = item['value'];}
           }
           
           if (item['old_value']) {

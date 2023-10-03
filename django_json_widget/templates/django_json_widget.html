@@ -16,36 +16,36 @@
         var editor = new JSONEditor(container, options);
         var json = {{ widget.value|safe }};
         
-        var new_json = {}
+        // var new_json = {}
 
-        console.log(json);
+        // console.log(json);
   
-        json.forEach(function CallBack(item, i) {
-          console.log(i);
-          console.log(item['title']);
-          console.log(new_json);
+        // json.forEach(function CallBack(item, i) {
+        //   console.log(i);
+        //   console.log(item['title']);
+        //   console.log(new_json);
           
-          // check for duplicates
-          new_title = null;
-          if (new_json[item['title']]) {
-            console.log('yes');
-            new_title = item['title'] + '_' + i.toString();
-          }
-          else {console.log('no');}
+        //   // check for duplicates
+        //   new_title = null;
+        //   if (new_json[item['title']]) {
+        //     console.log('yes');
+        //     new_title = item['title'] + '_' + i.toString();
+        //   }
+        //   else {console.log('no');}
 
-          // add to new json
-          if (item['value_name']) {
-            if (new_title) {new_json[new_title] = item['value_name'];}
-            else {new_json[item['title']] = item['value_name'];}
-          } else {
-            if (new_title) {new_json[new_title] = item['value'];}
-            else {new_json[item['title']] = item['value'];}
-          }
+        //   // add to new json
+        //   if (item['value_name']) {
+        //     if (new_title) {new_json[new_title] = item['value_name'];}
+        //     else {new_json[item['title']] = item['value_name'];}
+        //   } else {
+        //     if (new_title) {new_json[new_title] = item['value'];}
+        //     else {new_json[item['title']] = item['value'];}
+        //   }
           
-          if (item['old_value']) {
-            new_json[item['title']] += ' (Edited)'
-          }
-        })
+        //   if (item['old_value']) {
+        //     new_json[item['title']] += ' (Edited)'
+        //   }
+        // })
   
         editor.set(new_json);
     })();

@@ -11,7 +11,7 @@
         options.onChange = function () {
             var json = editor.get();
             console.log(json);
-            console.log({{ widget.options|safe }});
+            console.log({{ widget.value|safe }});
             textarea.value=JSON.stringify(json);
         }
 

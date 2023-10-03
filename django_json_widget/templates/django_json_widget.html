@@ -19,6 +19,7 @@
 
               if ((item['title'].includes('Title') || item['title'].includes('Description')) && item['value'] != value_in_editor) {
                 item['old_value'] = item['value'];
+                item['old_value_name'] = '';
                 item['value'] = value_in_editor;
               }
             })

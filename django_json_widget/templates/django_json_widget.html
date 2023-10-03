@@ -11,16 +11,17 @@
         options.onChange = function () {
             var json = editor.get();
             var base_data = {{ widget.value|safe }};
-            // base_data.forEach(function CallBack(item, i) {
-            //   value_in_editor = json[item['title']];
-            //   if (!value_in_editor) {
-            //     value_in_editor = json[item['title'] + ' (Edited)'];
-            //   }
+            base_data.forEach(function CallBack(item, i) {
+              value_in_editor = json[item['title']];
+              if (value_in_editor == undefined) {
+                value_in_editor = json[item['title'] + ' (Edited)'];
+              }
 
-            //   if (item['value_name'] && item['value_name'] != value_in_editor) {
-            //     base_data
-            //   }
-            // })
+              if ((item['title'].includes('Title') || item['title'].includes('Description')) && item['value'] != value_in_editor) {
+                item['old_value'] = item['value'];
+                item['value'] = value_in_editor;
+              }
+            })
             textarea.value=JSON.stringify(base_data);
         }
 
@@ -28,13 +29,8 @@
         var json = {{ widget.value|safe }};
         
         var new_json = {}
-
-        // console.log(json);
   
         json.forEach(function CallBack(item, i) {
-          // console.log(i);
-          // console.log(item['title']);
-          // console.log(new_json);
           
           // check for duplicates
           new_title = null;

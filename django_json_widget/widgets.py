@@ -20,7 +20,7 @@ class JSONEditorWidget(forms.Widget):
 
     def __init__(self, attrs=None, mode='view', options=None, width=None, height=None):
         default_options = {
-            'modes': ['view'],
+            'modes': ['view', 'text'],
             'mode': mode,
             'search': True,
         }

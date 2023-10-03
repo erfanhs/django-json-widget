@@ -10,9 +10,18 @@
         var options = {{ widget.options|safe }};
         options.onChange = function () {
             var json = editor.get();
-            console.log(json);
-            console.log({{ widget.value|safe }});
-            textarea.value=JSON.stringify(json);
+            var base_data = {{ widget.value|safe }};
+            // base_data.forEach(function CallBack(item, i) {
+            //   value_in_editor = json[item['title']];
+            //   if (!value_in_editor) {
+            //     value_in_editor = json[item['title'] + ' (Edited)'];
+            //   }
+
+            //   if (item['value_name'] && item['value_name'] != value_in_editor) {
+            //     base_data
+            //   }
+            // })
+            textarea.value=JSON.stringify(base_data);
         }
 
         var editor = new JSONEditor(container, options);
@@ -45,7 +54,8 @@
           }
           
           if (item['old_value']) {
-            new_json[item['title']] += ' (Edited)'
+            new_json[item['title'] + ' (Edited)'] = new_json[item['title']];
+            delete new_json[item['title']]
           }
         })
   

@@ -10,6 +10,8 @@
         var options = {{ widget.options|safe }};
         options.onChange = function () {
             var json = editor.get();
+            console.log(json);
+            console.log(widget.value|safe);
             textarea.value=JSON.stringify(json);
         }
 
@@ -18,12 +20,12 @@
         
         var new_json = {}
 
-        console.log(json);
+        // console.log(json);
   
         json.forEach(function CallBack(item, i) {
-          console.log(i);
-          console.log(item['title']);
-          console.log(new_json);
+          // console.log(i);
+          // console.log(item['title']);
+          // console.log(new_json);
           
           // check for duplicates
           new_title = null;

@@ -18,7 +18,7 @@ class JSONEditorWidget(forms.Widget):
 
     template_name = 'django_json_widget.html'
 
-    def __init__(self, attrs=None, mode='view', options=None, width=None, height=None):
+    def __init__(self, attrs=None, mode='form', options=None, width=None, height=None):
         default_options = {
             'modes': ['form'],
             'mode': mode,
